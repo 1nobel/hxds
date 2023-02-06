@@ -73,7 +73,7 @@ public class DriverServiceImpl implements DriverService {
         }
 
         param.put("openId", openId);
-        this.driverDao.registerNewDriver(param);    // 没有注册,进行注册
+        this.driverDao.registerNewDriver(param);                   // 没有注册,进行注册
         String driverId = this.driverDao.searchDriverId(openId);   // 获取司机ID、用户登陆
 
         // 设置司机默认属性

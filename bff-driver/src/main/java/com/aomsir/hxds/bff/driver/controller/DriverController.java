@@ -32,7 +32,7 @@ public class DriverController {
     @PostMapping("/registerNewDriver")
     @Operation(summary = "新司机注册")
     public R registerNewDriver(@RequestBody @Valid RegisterNewDriverForm form) {
-        long driverId = this.driverService.registerNewDriver(form);
+        long driverId = this.driverService.registerNewDriver(form);   // 获取主键值
 
         StpUtil.login(driverId);     //在SaToken上面执行登陆,实际上就是缓存userId,然后才有资格拿到令牌
         String token = StpUtil.getTokenInfo().getTokenValue();    //生成Token令牌字符串（已加密）
