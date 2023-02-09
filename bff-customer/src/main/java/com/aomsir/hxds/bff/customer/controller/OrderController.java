@@ -71,7 +71,6 @@ public class OrderController {
     }
 
 
-
     @PostMapping("/confirmArriveStartPlace")
     @SaCheckLogin
     @Operation(summary = "确定司机已经到达")
@@ -105,7 +104,7 @@ public class OrderController {
 
 
     @PostMapping("/updateOrderAboutPayment")
-    @Operation(summary = "查询司机是否关联某订单")
+    @Operation(summary = "更新订单支付信息")
     @SaCheckLogin
     public R updateOrderAboutPayment(@RequestBody @Valid UpdateOrderAboutPaymentForm form) {
         String result = this.orderService.updateOrderAboutPayment(form);

@@ -113,7 +113,7 @@ public class VoiceTextCheckTask {
                     }
                 }
             }
-            Long id = orderVoiceTextDao.searchIdByUuid(uuid);
+            Long id = this.orderVoiceTextDao.searchIdByUuid(uuid);
             if (id == null) {
                 throw new HxdsException("没有找到代驾语音文本记录");
             }
@@ -124,14 +124,14 @@ public class VoiceTextCheckTask {
             param.put("keywords", ArrayUtil.join(keywords.toArray(), ","));
             
             //更新数据表中该文本的审核结果
-            int rows = orderVoiceTextDao.updateCheckResult(param);
+            int rows = this.orderVoiceTextDao.updateCheckResult(param);
             if (rows != 1) {
                 throw new HxdsException("更新内容检查结果失败");
             }
             log.debug("更新内容验证成功");
             
             //查询该订单有多少个录音文本和需要人工审核的文本
-            HashMap map = orderMonitoringDao.searchOrderRecordsAndReviews(orderId);
+            HashMap map = this.orderMonitoringDao.searchOrderRecordsAndReviews(orderId);
             
             id = MapUtil.getLong(map, "id");
             Integer records = MapUtil.getInt(map, "records");
@@ -148,7 +148,7 @@ public class VoiceTextCheckTask {
             }
             
             //更新order_monitoring表中的记录
-            orderMonitoringDao.updateOrderMonitoring(entity);
+            this.orderMonitoringDao.updateOrderMonitoring(entity);
 
         }
     }

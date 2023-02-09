@@ -171,7 +171,7 @@ public class OrderServiceImpl implements OrderService {
         mileage= NumberUtil.div(mileage,"1000",1, RoundingMode.CEILING).toString();
 
         /*
-         * 3.查询订单消息
+         * 3.查询订单信息
          */
         SearchSettlementNeedDataForm form_3 = new SearchSettlementNeedDataForm();
         form_3.setOrderId(form.getOrderId());
@@ -189,8 +189,6 @@ public class OrderServiceImpl implements OrderService {
         form_4.setMileage(mileage);
         form_4.setTime(startTime.split(" ")[1]);
         form_4.setMinute(waitingMinute);
-
-
         r = this.ruleServiceApi.calculateOrderCharge(form_4);
         map = (HashMap) r.get("result");
         String mileageFee = MapUtil.getStr(map, "mileageFee");

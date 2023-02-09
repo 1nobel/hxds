@@ -46,7 +46,7 @@ public class OrderController {
     public R searchDriverExecuteOrder(@RequestBody @Valid SearchDriverExecuteOrderForm form) {
         long driverId = StpUtil.getLoginIdAsLong();
         form.setDriverId(driverId);
-        HashMap map = orderService.searchDriverExecuteOrder(form);
+        HashMap map = this.orderService.searchDriverExecuteOrder(form);
         return R.ok()
                 .put("result", map);
     }
@@ -121,7 +121,7 @@ public class OrderController {
 
     @PostMapping("/searchReviewDriverOrderBill")
     @SaCheckLogin
-    @Operation(summary = "查询司机预览订单")
+    @Operation(summary = "查询司机预览账单")
     public R searchReviewDriverOrderBill(@RequestBody @Valid SearchReviewDriverOrderBillForm form) {
         long driverId = StpUtil.getLoginIdAsLong();
         form.setDriverId(driverId);

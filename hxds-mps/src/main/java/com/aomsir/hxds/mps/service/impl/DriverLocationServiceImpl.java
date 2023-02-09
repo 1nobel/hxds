@@ -81,6 +81,7 @@ public class DriverLocationServiceImpl implements DriverLocationService {
     }
 
 
+    // 查询附近适合接单的司机
     @Override
     public ArrayList searchBefittingDriverAboutOrder(double startPlaceLatitude,
                                                      double startPlaceLongitude,
@@ -107,7 +108,7 @@ public class DriverLocationServiceImpl implements DriverLocationService {
 
         ArrayList list = new ArrayList(); //需要通知的司机列表
 
-        // 不为空则附近有代驾订单
+        // 不为空则附近有代驾司机
         if (radius != null) {
             Iterator<GeoResult<RedisGeoCommands.GeoLocation<String>>> iterator = radius.iterator();
             while (iterator.hasNext()) {

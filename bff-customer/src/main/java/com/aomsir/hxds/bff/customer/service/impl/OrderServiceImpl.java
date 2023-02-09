@@ -235,7 +235,7 @@ public class OrderServiceImpl implements OrderService {
 
             int status = MapUtil.getInt(map, "status");
 
-            // TODO status是6状态，要额外查询最佳代金券
+
             if (status == 6) {
                 SearchBestUnUseVoucherForm voucherForm = new SearchBestUnUseVoucherForm();
                 voucherForm.setCustomerId(form.getCustomerId());

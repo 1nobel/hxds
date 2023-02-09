@@ -27,7 +27,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("/registerNewCustomer")
-    @Operation(summary = "注册新司机")
+    @Operation(summary = "注册新乘客")
     public R registerNewCustomer(@RequestBody @Valid RegisterNewCustomerForm form) {
         long customerId = this.customerService.registerNewCustomer(form);
 
